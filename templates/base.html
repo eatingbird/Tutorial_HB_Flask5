@@ -1,0 +1,12 @@
+<!-- other three templates inherit from this using two jinja syntax -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title%} TITLE GOES HERE {% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1></h1>
+    {% block content %} BODY CONTENT GOES HERE {% endblock %}
+</body>
+</html>

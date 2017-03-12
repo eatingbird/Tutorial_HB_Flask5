@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 from flask_debugtoolbar import DebugToolbarExtension
-
+import jinja2
 
 app = Flask(__name__)
 
@@ -9,10 +9,21 @@ app = Flask(__name__)
 app.secret_key = "ABC"
 
 @app.route('/')
-    return renter_template(index.html)
+def index():
+    return render_template("index.html")
 
 
-# YOUR ROUTES GO HERE
+@app.route("/application-success")
+def show_post():
+
+    first = request.form.get('first')
+    last = request.form.get('last')
+    salary = request.form.get('salary')
+    job = request.form.get('job')
+
+    return render_template('templates/application-response.html', 
+                           first=first, last=last, salary=salary,
+                           job=job)
 
 
 if __name__ == "__main__":

@@ -1,1 +1,16 @@
-/* Your styles can go here. */
+input {
+    background-color: yellow;
+}
+
+.thick {
+    font-weight: bold;
+}
+
+p {
+    width: 200px;
+}
+
+.box{
+    border: 1px solid black;
+}
+
