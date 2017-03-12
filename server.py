@@ -1,6 +1,8 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 import jinja2
+
+from positions import job_titles
 
 app = Flask(__name__)
 
@@ -19,18 +21,18 @@ def form():
     """Show application form. Get the input by POST.
     Data from application-form.html to /application-form"""
 
-    return render_template("application-form.html")
+    return render_template("application-form.html",
+                           job_titles=job_titles)
 
 
 @app.route("/application-success", methods=["POST"])
 def show_post():
     """ Post data through application-form.html <form action> 
     to application-response.html"""
-    first = request.form.get('first')
-    last = request.form.get('last')
+    first_name = request.form.get('first_name')
+    last_name = request.form.get('last_name')
     salary = request.form.get('salary')
-    job = request.form.get('job')
-
+    job_title = request.form.get('job_title')
 
     # If salary is a float, limit the decimal places to two.
     salary = float(salary)
@@ -41,10 +43,10 @@ def show_post():
     
     # Add number formating to the salary (thousand separator and dollar)
     salary = "${:,}".format(salary)
-
+    
     return render_template('application-response.html',
-                           first=first, last=last,
-                           salary=salary, job=job)
+                           first_name=first_name, last_name=last_name,
+                           salary=salary, job_title=job_title)
 
 
 if __name__ == "__main__":
