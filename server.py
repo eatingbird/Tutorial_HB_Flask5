@@ -31,7 +31,16 @@ def show_post():
     salary = request.form.get('salary')
     job = request.form.get('job')
 
-    salary = "${:,}".format(int(salary))
+
+    # If salary is a float, limit the decimal places to two.
+    salary = float(salary)
+    if int(salary) == float(salary):
+        salary = int(salary)
+    else:
+        salary = round(float(salary), 2)
+    
+    # Add number formating to the salary (thousand separator and dollar)
+    salary = "${:,}".format(salary)
 
     return render_template('application-response.html',
                            first=first, last=last,
