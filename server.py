@@ -31,6 +31,8 @@ def show_post():
     salary = request.form.get('salary')
     job = request.form.get('job')
 
+    salary = "${:,}".format(int(salary))
+
     return render_template('application-response.html',
                            first=first, last=last,
                            salary=salary, job=job)
