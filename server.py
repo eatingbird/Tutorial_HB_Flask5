@@ -19,22 +19,21 @@ def form():
     """Show application form. Get the input by POST.
     Data from application-form.html to /application-form"""
 
-    first = request.form.get('first')
-    last = request.form.get('last')
-    salary = request.form.get('salary')
-    job = request.form.get('job')
-
-    return render_template("application-form.html",
-                           first=first, last=last,
-                           salary=salary, job=job)
+    return render_template("application-form.html")
 
 
 @app.route("/application-success", methods=["POST"])
 def show_post():
     """ Post data through application-form.html <form action> 
     to application-response.html"""
+    first = request.form.get('first')
+    last = request.form.get('last')
+    salary = request.form.get('salary')
+    job = request.form.get('job')
 
-    return render_template('application-response.html')
+    return render_template('application-response.html',
+                           first=first, last=last,
+                           salary=salary, job=job)
 
 
 if __name__ == "__main__":
