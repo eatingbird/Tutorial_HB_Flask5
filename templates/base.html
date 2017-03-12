@@ -1,12 +1,13 @@
-<!-- other three templates inherit from this using two jinja syntax -->
-<!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title%} TITLE GOES HERE {% endblock %}</title>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.css"/>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
+
 <body>
-    <h1></h1>
-    {% block content %} BODY CONTENT GOES HERE {% endblock %}
+    {% block body %}
+        BODY CONTENT GOES HERE VIA INHERITANCE
+    {% endblock %}
 </body>
 </html>

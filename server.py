@@ -8,22 +8,26 @@ app = Flask(__name__)
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "ABC"
 
-@app.route('/')
+@app.route("/")
 def index():
     return render_template("index.html")
 
-
-@app.route("/application-success")
-def show_post():
-
+@app.route("/application-form")
+def form():
     first = request.form.get('first')
     last = request.form.get('last')
     salary = request.form.get('salary')
     job = request.form.get('job')
 
-    return render_template('templates/application-response.html', 
+    return render_template("application-form.html", 
                            first=first, last=last, salary=salary,
                            job=job)
+
+
+@app.route("/application-success")
+def show_post():
+
+    return render_template('application-response.html')
 
 
 if __name__ == "__main__":

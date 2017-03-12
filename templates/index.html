@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block body %}
+
     Welcome to the homepage.
-    Go to the <a href='templates/application-form.html'>application form</a>.
-</body>
-</html>
+    Go to the <a href='/application-form'>application form</a>.
+
+{% endblock %}
