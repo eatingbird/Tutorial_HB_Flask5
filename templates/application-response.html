@@ -1,12 +1,7 @@
 {% extends 'base.html' %}
 
-<head>
-    <title>{% block title%} TITLE GOES HERE {% endblock %}</title>
-</head>
-
-
 {% block body %}
 
-    Thank you, {{ name }}, for applying to be a {{ job }}. Your minimum salary requirement is ${{ salary }}.
+    <div> Thank you, {{ first }} {{ last }}, for applying to be a {{ job }}. Your minimum salary requirement is ${{ salary }}. </div>
 
 {% endblock %}

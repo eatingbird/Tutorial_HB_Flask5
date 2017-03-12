@@ -9,29 +9,32 @@ app = Flask(__name__)
 app.secret_key = "ABC"
 
 @app.route("/")
-
 def index():
+    """Loads homepage index.html"""
+
     return render_template("index.html")
 
 @app.route("/application-form")
 def form():
-    """Show application form. Get the input by POST."""
+    """Show application form. Get the input by POST.
+    Data from application-form.html to /application-form"""
 
     first = request.form.get('first')
     last = request.form.get('last')
     salary = request.form.get('salary')
     job = request.form.get('job')
 
-    return render_template("application-form.html")
+    return render_template("application-form.html",
+                           first=first, last=last,
+                           salary=salary, job=job)
 
 
 @app.route("/application-success", methods=["POST"])
 def show_post():
-    """"""
+    """ Post data through application-form.html <form action> 
+    to application-response.html"""
 
-    return render_template('application-response.html',
-                           first=first, last=last,
-                           salary=salary, job=job)
+    return render_template('application-response.html')
 
 
 if __name__ == "__main__":

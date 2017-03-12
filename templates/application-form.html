@@ -8,7 +8,9 @@
       Please input your first and last name, salary requiremt as a number, and job you are applying for.
     </div>
 
-    <form method="POST">
+    {# Below action sends form data from application-form.html to /application-success route. hashtag cuirly is for commenting inside Jinja block #}
+
+    <form action="/application-success" method="POST">
       First name: <input type='text' name='first'><br>
       Last name: <input type='text' name='last' class='thick'></span><br>
       Salary requirement: <input type='text' name='salary'><br>
